@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "autoApprove": {
+      "fileSystem": {
+        "read": true,
+        "write": true,
+        "delete": false
+      },
+      "commands": [
+        "npm run lint",
+        "npm run format",
+        "npm test",
+        "git status",
+        "git diff",
+        "ls",
+        "grep"
+      ]
+    },
+    "requireExplicitApproval": [
+      "npm install",
+      "npm uninstall",
+      "git commit",
+      "git push",
+      "rm",
+      "rmdir",
+      "firebase deploy",
+      "cat .env",
+      "cat .env.development",
+      "cat .env.production",
+      "cat *serviceAccount*.json"
+    ],
+    "blockedPaths": [
+      ".env",
+      ".env.development",
+      ".env.production",
+      "serviceAccountKey.json",
+      "*.pem",
+      "*.key"
+    ]
+  },
+  "behavior": {
+    "autoLintAfterWrite": true,
+    "maxTokensPerSession": 100000
+  }
+}
