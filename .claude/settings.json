@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm --prefix university_final run lint*)",
+      "Bash(npm --prefix university_final test*)",
+      "Bash(npm run lint*)",
+      "Bash(npm test*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)"
+    ],
+    "ask": [
+      "Bash(npm install*)",
+      "Bash(npm i *)",
+      "Bash(npm uninstall*)",
+      "Bash(npm --prefix university_final install*)",
+      "Bash(npm --prefix university_final uninstall*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(git reset*)",
+      "Bash(rm *)",
+      "Bash(rmdir *)",
+      "Bash(firebase deploy*)",
+      "Bash(npx firebase deploy*)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)",
+      "Read(**/*serviceAccount*.json)",
+      "Read(**/*firebase-adminsdk*.json)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Edit(**/*serviceAccount*.json)",
+      "Edit(**/*firebase-adminsdk*.json)",
+      "Edit(**/*.pem)",
+      "Edit(**/*.key)",
+      "Bash(cat *.env*)",
+      "Bash(cat */.env*)",
+      "Bash(type *.env*)",
+      "Bash(less *.env*)",
+      "Bash(head *.env*)",
+      "Bash(tail *.env*)",
+      "Bash(printenv*)",
+      "Bash(env)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git add -f *.env*)",
+      "Bash(git add --force *.env*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lint-edited-file.js\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

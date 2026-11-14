@@ -1,0 +1,29 @@
+# Root ignore rules for the backend/ repository.
+# Patterns without a leading slash apply in every subfolder (e.g. university_final/).
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Private keys and Firebase service-account credentials
+*.pem
+*.key
+*serviceAccount*.json
+*firebase-adminsdk*.json
+
+# Firebase emulator / CLI logs
+*-debug.log
+
+# Node.js dependencies
+node_modules/
+
+# Test coverage
+coverage/
+
+# Claude Code personal settings (shared settings in .claude/settings.json ARE committed)
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
